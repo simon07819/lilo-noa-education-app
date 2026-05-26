@@ -8,9 +8,9 @@ import BottomNav from "./BottomNav";
 
 const worldBackgrounds: Record<string, string> = {
   forest: "/images/stage-select-background-enchanted-forest.png",
-  city: "/images/stages-background.png",
-  island: "/images/stages-background.png",
-  space: "/images/stages-background.png",
+  city: "/images/stage-select-background-enchanted-forest.png",
+  island: "/images/stage-select-background-enchanted-forest.png",
+  space: "/images/stage-select-background-enchanted-forest.png",
 };
 
 const worldBanners: Record<string, string> = {
@@ -50,7 +50,7 @@ export default function StagesScreen() {
 
       {/* ═══ CHARACTER — absolute on background ═══ */}
       <img
-        src="/images/character-lilo.png"
+        src="/images/character-lilo-home-screen.png"
         alt="Lilo"
         className="absolute bottom-[10%] right-[-4%] w-[160px] h-[160px] object-contain z-10"
         style={{ filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.25))" }}
