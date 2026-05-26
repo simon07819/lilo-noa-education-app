@@ -157,7 +157,7 @@ export default function HomeScreen() {
       {/* ═══ BOTTOM NAV ═══ */}
       <div className="absolute bottom-0 left-0 right-0 z-30"
         style={{
-          background: "#FFFFFF",
+          background: "rgba(255,255,255,0.92)",
           borderTopLeftRadius: "24px",
           borderTopRightRadius: "24px",
           boxShadow: "0 -4px 20px rgba(0,0,0,0.08)",

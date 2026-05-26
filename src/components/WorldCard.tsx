@@ -28,7 +28,6 @@ export default function WorldCard({ world, onSelect }: WorldCardProps) {
       className="relative w-full rounded-[28px] overflow-hidden transition-all duration-200 hover:scale-[1.01] active:scale-[0.98]"
       style={{
         boxShadow: "0 4px 18px rgba(0,0,0,0.12)",
-        background: "#FFFFFF",
       }}>
       {/* Thumbnail image */}
       <div className="relative h-40 overflow-hidden">
@@ -55,7 +54,7 @@ export default function WorldCard({ world, onSelect }: WorldCardProps) {
       </div>
 
       {/* Footer */}
-      <div className="px-4 py-3">
+      <div className="px-4 py-3" style={{ background: "rgba(255,255,255,0.85)" }}>
         {isLocked ? (
           <p className="text-sm font-bold text-center" style={{ color: "#333333" }}>
             🔒 Encore {world.requiredStars - profile.stars} ⭐ pour débloquer

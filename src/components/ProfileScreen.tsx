@@ -86,7 +86,7 @@ export default function ProfileScreen() {
                 style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
               />
               <button className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ background: "#FFFFFF", boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}>
+                style={{ background: "rgba(255,255,255,0.92)", boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}>
                 <img src="/images/profile-edit-pencil-icon.png" alt="✏️" className="w-[16px] h-[16px] object-contain" />
               </button>
             </div>
