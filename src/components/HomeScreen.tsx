@@ -110,7 +110,7 @@ export default function HomeScreen() {
 
       {/* Bas — Profil + Paramètres */}
       <div className="absolute left-0 right-0 flex justify-center gap-10"
-        style={{ bottom: "0%", zIndex: 20 }}>
+        style={{ bottom: "1%", zIndex: 20 }}>
 
         {/* Profil */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
