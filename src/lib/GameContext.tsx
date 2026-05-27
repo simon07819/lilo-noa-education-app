@@ -26,7 +26,7 @@ const GameContext = createContext<GameContextType>(null!);
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<UserProfile>(loadProfile);
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("worlds");
   const [selectedWorld, setSelectedWorld] = useState("");
   const [selectedStage, setSelectedStage] = useState("");
   const [soundEnabled, setSoundEnabled] = useState(true);
