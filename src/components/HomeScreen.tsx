@@ -55,7 +55,7 @@ export default function HomeScreen() {
       </div>
 
       {/* Logo Lilo & Noa */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "11%" }}>
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "13%" }}>
         <img
           src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
@@ -110,7 +110,7 @@ export default function HomeScreen() {
 
       {/* Bas — Profil + Paramètres */}
       <div className="absolute left-0 right-0 flex justify-center gap-10"
-        style={{ bottom: "2%", zIndex: 20 }}>
+        style={{ bottom: "0%", zIndex: 20 }}>
 
         {/* Profil */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
