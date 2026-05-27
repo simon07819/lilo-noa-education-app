@@ -18,7 +18,7 @@ export default function HomeScreen() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Header gauche — avatar gold + nom + étoile, direct sur le background */}
+      {/* Header — avatar gold + nom + étoile direct sur le background */}
       <div className="absolute top-0 left-0 z-20 flex items-center gap-2 pt-5 pl-4">
         <img
           src="/images/home-boy-avatar-icon.png"
@@ -34,17 +34,17 @@ export default function HomeScreen() {
         <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
           <span style={{
             color: "#FFFFFF",
-            fontSize: "16px",
+            fontSize: "20px",
             fontWeight: 800,
             textShadow: "0 1px 5px rgba(0,0,0,0.7)",
           }}>
             {profile.name}
           </span>
           <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-            <span style={{ color: "#FFD700", fontSize: "18px", lineHeight: 1, textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>★</span>
+            <span style={{ color: "#FFD700", fontSize: "24px", lineHeight: 1, textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>★</span>
             <span style={{
               color: "#FFFFFF",
-              fontSize: "15px",
+              fontSize: "20px",
               fontWeight: 800,
               textShadow: "0 1px 5px rgba(0,0,0,0.7)",
             }}>
@@ -54,10 +54,8 @@ export default function HomeScreen() {
         </div>
       </div>
 
-      {/* Pas de bouton gear en haut à droite — il est déjà en bas */}
-
-      {/* Logo Lilo & Noa — descendu, grand */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "10%" }}>
+      {/* Logo Lilo & Noa */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "15%" }}>
         <img
           src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
@@ -69,7 +67,7 @@ export default function HomeScreen() {
         />
       </div>
 
-      {/* Mascotte — z:5, descendu à 14%, pieds derrière le bouton Jouer */}
+      {/* Mascotte — z:5, pieds cachés par le bouton Jouer */}
       <img
         src="/images/character-lilo-home-screen.png"
         alt="Lilo"
@@ -77,15 +75,15 @@ export default function HomeScreen() {
         style={{
           zIndex: 5,
           left: "50%",
-          bottom: "13%",
+          bottom: "8%",
           transform: "translateX(-50%)",
           height: "60%",
           width: "auto",
         }}
       />
 
-      {/* Bouton Jouer — z:20 cache les pieds, descendu à 18% */}
-      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "19%", zIndex: 20 }}>
+      {/* Bouton Jouer — z:20 cache les pieds */}
+      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "14%", zIndex: 20 }}>
         <button
           onClick={() => setScreen("worlds")}
           style={{
@@ -112,7 +110,7 @@ export default function HomeScreen() {
 
       {/* Bas — Profil + Paramètres */}
       <div className="absolute left-0 right-0 flex justify-center gap-10"
-        style={{ bottom: "4%", zIndex: 20 }}>
+        style={{ bottom: "2%", zIndex: 20 }}>
 
         {/* Profil */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
@@ -128,13 +126,16 @@ export default function HomeScreen() {
               padding: 0,
               cursor: "pointer",
               background: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <img
               src="/images/home-boy-avatar-icon.png"
               alt="Profil"
               className="home-avatar-bottom"
-              style={{ objectFit: "cover", display: "block", borderRadius: "50%" }}
+              style={{ objectFit: "cover", display: "block" }}
             />
           </button>
           <span style={{
