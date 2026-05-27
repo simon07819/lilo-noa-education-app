@@ -23,15 +23,15 @@ export default function HomeScreen() {
         <img
           src="/images/home-boy-avatar-icon.png"
           alt="Avatar"
+          className="force-size"
           style={{
-            width: "96px",
-            height: "96px",
+            "--fs-w": "120px",
+            "--fs-h": "120px",
             borderRadius: "50%",
             objectFit: "cover",
             border: "4px solid #FFD700",
             boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
-            flexShrink: 0,
-          }}
+          } as React.CSSProperties}
         />
         <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
           <span style={{
@@ -59,7 +59,7 @@ export default function HomeScreen() {
       {/* Pas de bouton gear en haut à droite — il est déjà en bas */}
 
       {/* Logo Lilo & Noa — descendu, grand */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "8%" }}>
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "10%" }}>
         <img
           src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
@@ -79,7 +79,7 @@ export default function HomeScreen() {
         style={{
           zIndex: 5,
           left: "50%",
-          bottom: "20%",
+          bottom: "16%",
           transform: "translateX(-50%)",
           height: "60%",
           width: "auto",
@@ -87,7 +87,7 @@ export default function HomeScreen() {
       />
 
       {/* Bouton Jouer — z:20 cache les pieds, descendu à 18% */}
-      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "24%", zIndex: 20 }}>
+      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "19%", zIndex: 20 }}>
         <button
           onClick={() => setScreen("worlds")}
           style={{

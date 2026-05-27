@@ -111,6 +111,15 @@
   }
 }
 
+/* Force image sizes — override Tailwind preflight height:auto */
+.force-size {
+  width: var(--fs-w) !important;
+  height: var(--fs-h) !important;
+  min-width: var(--fs-w) !important;
+  min-height: var(--fs-h) !important;
+  flex-shrink: 0 !important;
+}
+
 /* Scrollbar enfantin */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #f0e6ff; border-radius: 10px; }
