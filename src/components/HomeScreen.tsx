@@ -4,181 +4,207 @@ import { useState } from "react";
 import { useGame } from "@/lib/GameContext";
 import SettingsModal from "./SettingsModal";
 
+/* ═══════════════════════════════════════════════════════════════
+   HOME SCREEN — rebuilt per Gemini analysis & reference design
+   Colors: #D9F0FF, #E8F7FF, #F0FCFF, #4A90E2, #333333, #999999,
+           #92D050, #70AD47, #FFFFFF, #FFD700, #3A7BD5, #000000
+   ═══════════════════════════════════════════════════════════════ */
+
 export default function HomeScreen() {
   const { profile, setScreen } = useGame();
   const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      {/* ── Background ── */}
+      {/* ═══ BACKGROUND — home-background.png ═══ */}
       <img
         src="/images/home-background.png"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* ── Header ── */}
-      <div className="absolute top-0 left-0 right-0 z-20 flex items-start justify-between px-4 pt-5">
-        {/* Avatar pill — avatar bigger, star visible */}
-        <div className="flex items-center gap-2"
+      {/* ═══ TITLE — app-title-lilo-noa-home-screen.png ═══ */}
+      <div className="absolute top-[5%] left-0 right-0 z-20 flex justify-center">
+        <img
+          src="/images/app-title-lilo-noa-home-screen.png"
+          alt="Lilo & Noa"
+          className="w-[280px] h-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+        />
+      </div>
+
+      {/* ═══ HEADER — avatar + name + star count ═══ */}
+      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-5 pt-6">
+        <div className="flex items-center gap-1.5"
           style={{
-            background: "rgba(255,255,255,0.93)",
-            borderRadius: "40px",
-            padding: "4px 16px 4px 4px",
-            boxShadow: "0 3px 14px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.9)",
+            background: "rgba(255,255,255,0.92)",
+            borderRadius: "30px",
+            padding: "3px 14px 3px 3px",
+            boxShadow: "0 3px 14px rgba(0,0,0,0.08), inset 0 1px 0 white",
           }}>
           <img
             src="/images/home-boy-avatar-icon.png"
             alt="Avatar"
-            className="w-[52px] h-[52px] rounded-full object-cover shrink-0"
-            style={{ border: "2.5px solid white", boxShadow: "0 2px 6px rgba(0,0,0,0.15)" }}
+            className="w-[42px] h-[42px] rounded-full object-cover border-2 border-white shrink-0"
           />
           <div className="flex flex-col leading-tight">
-            <span className="text-[14px] font-bold" style={{ color: "#333333" }}>
+            <span className="text-[12px] font-semibold" style={{ color: "#333333" }}>
               {profile.name}
             </span>
-            <div className="flex items-center gap-1 mt-0.5">
-              <div className="flex items-center justify-center w-[18px] h-[18px] rounded-full"
-                style={{ background: "#FFD700" }}>
-                <span style={{ fontSize: "11px", lineHeight: 1 }}>★</span>
-              </div>
-              <span className="text-[13px] font-bold" style={{ color: "#333333" }}>
+            <div className="flex items-center gap-0.5 -mt-0.5">
+              <img
+                src="/images/home-star-icon.png"
+                alt="Star"
+                className="w-[16px] h-[16px] object-contain"
+              />
+              <span className="text-[11px] font-bold" style={{ color: "#333333" }}>
                 {profile.stars}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Settings gear top-right — bigger icon, no white circle */}
+        {/* Settings gear — top right */}
         <button
           onClick={() => setShowSettings(true)}
-          className="hover:scale-110 transition active:scale-95 shrink-0"
+          className="w-[44px] h-[44px] rounded-full flex items-center justify-center hover:scale-110 transition active:scale-95"
           style={{
-            width: "46px",
-            height: "46px",
-            borderRadius: "50%",
-            background: "rgba(255,255,255,0.88)",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.14)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            background: "rgba(255,255,255,0.85)",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
           }}>
           <img
             src="/images/home-settings-gear-icon.png"
             alt="Paramètres"
-            className="object-contain"
-            style={{ width: "32px", height: "32px" }}
+            className="w-[24px] h-[24px] object-contain"
           />
         </button>
       </div>
 
-      {/* ── Logo — full-size, proper image ── */}
-      <div className="absolute top-[8%] left-0 right-0 z-20 flex justify-center">
-        <img
-          src="/images/app-logo-lilo-noa.png"
-          alt="Lilo & Noa"
-          style={{
-            width: "340px",
-            height: "auto",
-            objectFit: "contain",
-            filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.18))",
-          }}
-        />
-      </div>
-
-      {/* ── Character — z:5 so feet hide behind Jouer button ── */}
+      {/* ═══ CHARACTER — pleine hauteur 40%, pieds à 75% depuis le haut ═══ */}
       <img
         src="/images/character-lilo-home-screen.png"
         alt="Lilo"
-        className="absolute object-contain"
+        className="absolute z-10 object-contain"
         style={{
-          zIndex: 5,
           left: "50%",
-          bottom: "17%",
+          bottom: "27%",
           transform: "translateX(-50%)",
-          height: "62%",
-          width: "auto",
+          width: "62%",
+          maxWidth: "240px",
+          height: "auto",
         }}
       />
 
-      {/* ── Jouer button — z:20 hides character feet ── */}
-      <div className="absolute left-0 right-0 flex justify-center"
-        style={{ bottom: "14%", zIndex: 20 }}>
+      {/* ═══ PLAY BUTTON — bottom 168px (20% of 844px) ═══ */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ bottom: "168px" }}>
         <button
           onClick={() => setScreen("worlds")}
-          className="font-extrabold text-white flex items-center justify-center gap-2
+          className="font-extrabold text-[24px] text-white flex items-center justify-center
             transition-all hover:brightness-110 active:scale-[0.97]"
           style={{
-            width: "268px",
-            height: "66px",
-            borderRadius: "33px",
-            fontSize: "28px",
+            width: "260px",
+            height: "62px",
+            borderRadius: "31px",
             background: "linear-gradient(180deg, #92D050 0%, #70AD47 100%)",
-            boxShadow: "0 6px 0 #5A9B35, 0 8px 24px rgba(0,0,0,0.22), inset 0 2px 0 rgba(255,255,255,0.5)",
+            boxShadow: "0 5px 0 #5A9B35, 0 7px 20px rgba(0,0,0,0.18), inset 0 2px 0 rgba(255,255,255,0.5)",
             border: "3px solid rgba(255,255,255,0.5)",
           }}>
-          Jouer
-          <span style={{ fontSize: "26px", lineHeight: 1 }}>▶</span>
+          ▶ Jouer
         </button>
       </div>
 
-      {/* ── Bottom: Profil + Paramètres ── */}
-      <div className="absolute left-0 right-0 flex justify-center gap-10"
-        style={{ bottom: "3%", zIndex: 20 }}>
+      {/* ═══ PROFILE + SETTINGS BUTTONS — bottom 96px (juste au-dessus de la nav 68px) ═══ */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center gap-3" style={{ bottom: "96px" }}>
+        <button
+          onClick={() => setScreen("profile")}
+          className="flex items-center justify-center gap-2 font-semibold text-[14px] transition-all hover:brightness-105 active:scale-95"
+          style={{
+            width: "130px",
+            height: "48px",
+            borderRadius: "24px",
+            background: "#D9F0FF",
+            color: "#333333",
+            boxShadow: "0 3px 0 #B0D8F0, 0 3px 10px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7)",
+            border: "2px solid rgba(255,255,255,0.6)",
+          }}>
+          <img
+            src="/images/profile-nav-profile-icon.png"
+            alt=""
+            className="w-[18px] h-[18px] object-contain"
+          />
+          Profil
+        </button>
+        <button
+          onClick={() => setShowSettings(true)}
+          className="flex items-center justify-center gap-2 font-semibold text-[14px] transition-all hover:brightness-105 active:scale-95"
+          style={{
+            width: "130px",
+            height: "48px",
+            borderRadius: "24px",
+            background: "#D9F0FF",
+            color: "#333333",
+            boxShadow: "0 3px 0 #B0D8F0, 0 3px 10px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7)",
+            border: "2px solid rgba(255,255,255,0.6)",
+          }}>
+          <img
+            src="/images/profile-settings-gear-icon.png"
+            alt=""
+            className="w-[20px] h-[20px] object-contain"
+          />
+          Paramètres
+        </button>
+      </div>
 
-        {/* Profil — avatar photo directly, white ring */}
-        <div className="flex flex-col items-center gap-1">
-          <button
+      {/* ═══ BOTTOM NAV ═══ */}
+      <div className="absolute bottom-0 left-0 right-0 z-30"
+        style={{
+          background: "rgba(255,255,255,0.92)",
+          borderTopLeftRadius: "24px",
+          borderTopRightRadius: "24px",
+          boxShadow: "0 -4px 20px rgba(0,0,0,0.08)",
+        }}>
+        <div className="flex justify-around items-center h-[72px] px-2">
+          <NavItem
+            img="/images/footer-learn-playing-icon.png"
+            label="Jouer"
+            active
+            onClick={() => setScreen("home")}
+          />
+          <NavItem
+            img="/images/footer-explore-worlds-icon.png"
+            label="Mondes"
+            onClick={() => setScreen("worlds")}
+          />
+          <NavItem
+            img="/images/footer-rewards-surprises-icon.png"
+            label="Récompenses"
             onClick={() => setScreen("profile")}
-            className="hover:scale-110 transition active:scale-90 rounded-full overflow-hidden"
-            style={{
-              width: "66px",
-              height: "66px",
-              border: "3.5px solid white",
-              boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
-            }}>
-            <img
-              src="/images/home-boy-avatar-icon.png"
-              alt="Profil"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </button>
-          <span style={{
-            fontSize: "13px",
-            fontWeight: 800,
-            color: "#FFFFFF",
-            textShadow: "0 1px 6px rgba(0,0,0,0.7)",
-          }}>Profil</span>
-        </div>
-
-        {/* Paramètres — gear big inside white circle */}
-        <div className="flex flex-col items-center gap-1">
-          <button
-            onClick={() => setShowSettings(true)}
-            className="hover:scale-110 transition active:scale-90 rounded-full flex items-center justify-center"
-            style={{
-              width: "66px",
-              height: "66px",
-              background: "rgba(255,255,255,0.93)",
-              border: "3.5px solid white",
-              boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
-            }}>
-            <img
-              src="/images/home-settings-gear-icon.png"
-              alt="Paramètres"
-              style={{ width: "42px", height: "42px", objectFit: "contain" }}
-            />
-          </button>
-          <span style={{
-            fontSize: "13px",
-            fontWeight: 800,
-            color: "#FFFFFF",
-            textShadow: "0 1px 6px rgba(0,0,0,0.7)",
-          }}>Paramètres</span>
+          />
+          <NavItem
+            img="/images/footer-exciting-stages-icon.png"
+            label="Étapes"
+            onClick={() => setScreen("stages")}
+          />
         </div>
       </div>
 
       <SettingsModal open={showSettings} onClose={() => setShowSettings(false)} />
     </div>
+  );
+}
+
+function NavItem({ img, label, active, onClick }: {
+  img: string; label: string; active?: boolean; onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex flex-col items-center gap-1 px-2 py-1 rounded-xl hover:brightness-95 transition active:scale-90">
+      <img src={img} alt={label} className="w-[28px] h-[28px] object-contain"
+        style={{ filter: active ? "none" : "grayscale(100%) opacity(0.5)" }} />
+      <span className="text-[9px] font-bold whitespace-nowrap"
+        style={{ color: active ? "#4A90E2" : "#999999" }}>
+        {label}
+      </span>
+    </button>
   );
 }
