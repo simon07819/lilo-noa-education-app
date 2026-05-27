@@ -79,48 +79,48 @@ export default function HomeScreen() {
         </button>
       </div>
 
-      {/* ═══ CHARACTER — lilo-home-screen, absolute on bg ═══ */}
+      {/* ═══ CHARACTER — pleine hauteur 40%, pieds à 75% depuis le haut ═══ */}
       <img
         src="/images/character-lilo-home-screen.png"
         alt="Lilo"
-        className="absolute z-10 object-contain drop-shadow-[0_10px_28px_rgba(0,0,0,0.25)]"
+        className="absolute z-10 object-contain"
         style={{
           left: "50%",
-          top: "58%",
-          transform: "translate(-50%, -50%)",
-          width: "55%",
-          maxWidth: "220px",
+          bottom: "27%",
+          transform: "translateX(-50%)",
+          width: "62%",
+          maxWidth: "240px",
           height: "auto",
         }}
       />
 
-      {/* ═══ PLAY BUTTON — gradient #92D050 → #70AD47 ═══ */}
-      <div className="absolute bottom-[14%] left-0 right-0 z-20 flex justify-center">
+      {/* ═══ PLAY BUTTON — bottom 168px (20% of 844px) ═══ */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ bottom: "168px" }}>
         <button
           onClick={() => setScreen("worlds")}
-          className="font-extrabold text-[22px] text-white flex items-center justify-center
+          className="font-extrabold text-[24px] text-white flex items-center justify-center
             transition-all hover:brightness-110 active:scale-[0.97]"
           style={{
-            width: "200px",
-            height: "60px",
-            borderRadius: "30px",
+            width: "260px",
+            height: "62px",
+            borderRadius: "31px",
             background: "linear-gradient(180deg, #92D050 0%, #70AD47 100%)",
             boxShadow: "0 5px 0 #5A9B35, 0 7px 20px rgba(0,0,0,0.18), inset 0 2px 0 rgba(255,255,255,0.5)",
             border: "3px solid rgba(255,255,255,0.5)",
           }}>
-          Jouer
+          ▶ Jouer
         </button>
       </div>
 
-      {/* ═══ PROFILE + SETTINGS BUTTONS ═══ */}
-      <div className="absolute bottom-[5%] left-0 right-0 z-20 flex justify-center gap-3">
+      {/* ═══ PROFILE + SETTINGS BUTTONS — bottom 96px (juste au-dessus de la nav 68px) ═══ */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center gap-3" style={{ bottom: "96px" }}>
         <button
           onClick={() => setScreen("profile")}
           className="flex items-center justify-center gap-2 font-semibold text-[14px] transition-all hover:brightness-105 active:scale-95"
           style={{
-            width: "150px",
-            height: "50px",
-            borderRadius: "25px",
+            width: "130px",
+            height: "48px",
+            borderRadius: "24px",
             background: "#D9F0FF",
             color: "#333333",
             boxShadow: "0 3px 0 #B0D8F0, 0 3px 10px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7)",
@@ -129,7 +129,7 @@ export default function HomeScreen() {
           <img
             src="/images/profile-nav-profile-icon.png"
             alt=""
-            className="w-[20px] h-[20px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
           Profil
         </button>
@@ -137,9 +137,9 @@ export default function HomeScreen() {
           onClick={() => setShowSettings(true)}
           className="flex items-center justify-center gap-2 font-semibold text-[14px] transition-all hover:brightness-105 active:scale-95"
           style={{
-            width: "150px",
-            height: "50px",
-            borderRadius: "25px",
+            width: "130px",
+            height: "48px",
+            borderRadius: "24px",
             background: "#D9F0FF",
             color: "#333333",
             boxShadow: "0 3px 0 #B0D8F0, 0 3px 10px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7)",
@@ -162,7 +162,7 @@ export default function HomeScreen() {
           borderTopRightRadius: "24px",
           boxShadow: "0 -4px 20px rgba(0,0,0,0.08)",
         }}>
-        <div className="flex justify-around items-center h-[68px] px-2">
+        <div className="flex justify-around items-center h-[72px] px-2">
           <NavItem
             img="/images/footer-learn-playing-icon.png"
             label="Jouer"
