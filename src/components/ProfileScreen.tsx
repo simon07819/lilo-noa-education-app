@@ -5,6 +5,7 @@ import { useGame } from "@/lib/GameContext";
 import { badges, accessories, Badge, Accessory } from "@/data/rewards";
 import Modal from "./Modal";
 import BottomNav from "./BottomNav";
+import SettingsModal from "./SettingsModal";
 
 const badgeImages: Record<string, string> = {
   "super-reader": "/images/profile-badge-super-reader.png",
@@ -19,9 +20,10 @@ const accessoryImages: Record<string, string> = {
 };
 
 export default function ProfileScreen() {
-  const { profile, updateProfile, setScreen } = useGame();
+  const { profile, updateProfile } = useGame();
   const [selectedBadge, setSelectedBadge] = useState<Badge | null>(null);
   const [selectedAccessory, setSelectedAccessory] = useState<Accessory | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
 
   const totalStages = 40;
   const completedStages = profile.completedStages.filter(s => s.completed).length;
@@ -44,40 +46,38 @@ export default function ProfileScreen() {
 
       <div className="relative z-10 flex flex-col h-full overflow-y-auto" style={{ paddingBottom: "80px" }}>
 
-        {/* Header */}
-        <div className="flex items-center justify-between px-4 pt-9 pb-4">
-          <button onClick={() => setScreen("home")}
-            className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xl transition active:scale-90"
-            style={{ background: "rgba(255,255,255,0.90)", color: "#333333", boxShadow: "0 2px 10px rgba(0,0,0,0.10)" }}>
-            ←
-          </button>
-          <div className="flex items-center gap-2"
-            style={{ background: "rgba(255,255,255,0.90)", borderRadius: "20px", padding: "6px 14px", boxShadow: "0 2px 10px rgba(0,0,0,0.08)" }}>
-            <img src="/images/profile-star-icon.png" alt="⭐" style={{ width: "20px", height: "20px", objectFit: "contain" }} />
-            <span className="font-extrabold" style={{ color: "#333333", fontSize: "15px" }}>{profile.stars}</span>
-          </div>
-        </div>
+        {/* Header — avatar large + nom + level + gear */}
+        <div className="px-4 pt-9 pb-4">
+          <div className="rounded-3xl p-4 flex items-center gap-4 relative"
+            style={{ background: "rgba(255,255,255,0.90)", boxShadow: "0 4px 16px rgba(0,0,0,0.10)" }}>
 
-        {/* Avatar + Name */}
-        <div className="px-5 pb-4">
-          <div className="rounded-3xl p-4 flex items-center gap-4"
-            style={{ background: "rgba(255,255,255,0.88)", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
+            {/* Settings gear — top right corner */}
+            <button
+              onClick={() => setShowSettings(true)}
+              className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center"
+              style={{ background: "rgba(0,0,0,0.06)" }}>
+              <img src="/images/home-settings-gear-icon.png" alt="Paramètres"
+                style={{ width: "22px", height: "22px", objectFit: "contain" }} />
+            </button>
+
+            {/* Avatar */}
             <div className="relative flex-shrink-0">
               <img src="/images/profile-boy-avatar.png" alt="Avatar"
                 style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover",
-                  border: "3px solid white", boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }} />
+                  border: "3px solid #FFD700", boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }} />
               <button className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center"
                 style={{ background: "#4A90E2", boxShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>
                 <img src="/images/profile-edit-pencil-icon.png" alt="✏️" style={{ width: "14px", height: "14px", objectFit: "contain" }} />
               </button>
             </div>
-            <div className="flex-1">
+
+            {/* Name + Level + XP */}
+            <div className="flex-1 pr-8">
               <h2 style={{ fontSize: "20px", fontWeight: 800, color: "#333333" }}>{profile.name}</h2>
-              <div className="inline-block rounded-full px-3 py-0.5 mt-1"
+              <div className="inline-block rounded-full px-3 py-0.5 mt-0.5"
                 style={{ background: "#D9F0FF", color: "#4A90E2", fontSize: "12px", fontWeight: 700 }}>
                 Niveau {profile.level}
               </div>
-              {/* XP */}
               <div className="mt-2">
                 <div className="flex justify-between mb-1" style={{ fontSize: "11px", fontWeight: 600, color: "#999" }}>
                   <span>XP</span><span>{profile.xp}/{profile.xpToNextLevel}</span>
@@ -94,8 +94,8 @@ export default function ProfileScreen() {
         <div className="flex justify-center gap-3 px-4 pb-4">
           {[
             { img: "/images/profile-star-icon.png", val: profile.stars, label: "Étoiles" },
-            { img: "/images/profile-gem-icon.png", val: profile.candies, label: "Bonbons" },
-            { img: "/images/profile-diamond-icon.png", val: profile.gems, label: "Gemmes" },
+            { img: "/images/candy-icon.png", val: profile.candies, label: "Bonbons" },
+            { img: "/images/profile-gem-icon.png", val: profile.gems, label: "Gemmes" },
           ].map(({ img, val, label }) => (
             <div key={label} className="flex flex-col items-center gap-1 flex-1 rounded-2xl py-2"
               style={{ background: "rgba(255,255,255,0.88)", boxShadow: "0 2px 10px rgba(0,0,0,0.06)" }}>
@@ -227,6 +227,7 @@ export default function ProfileScreen() {
         )}
       </Modal>
 
+      <SettingsModal open={showSettings} onClose={() => setShowSettings(false)} />
       <BottomNav />
     </div>
   );

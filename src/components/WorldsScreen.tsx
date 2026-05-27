@@ -36,10 +36,23 @@ export default function WorldsScreen() {
               style={{ background: "rgba(255,255,255,0.90)", color: "#333333", boxShadow: "0 2px 10px rgba(0,0,0,0.10)" }}>
               ←
             </button>
-            <div className="flex items-center gap-2"
-              style={{ background: "rgba(255,255,255,0.90)", borderRadius: "20px", padding: "6px 14px", boxShadow: "0 2px 10px rgba(0,0,0,0.08)" }}>
-              <img src="/images/world-select-star-icon.png" alt="⭐" style={{ width: "20px", height: "20px", objectFit: "contain" }} />
-              <span className="font-extrabold" style={{ color: "#333333", fontSize: "15px" }}>{profile.stars}</span>
+
+            {/* Stars + Candies */}
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+                style={{ background: "rgba(255,255,255,0.90)", boxShadow: "0 2px 10px rgba(0,0,0,0.08)" }}>
+                <img src="/images/world-select-star-icon.png" alt="⭐" style={{ width: "18px", height: "18px", objectFit: "contain" }} />
+                <span className="font-extrabold" style={{ color: "#333333", fontSize: "14px" }}>{profile.stars}</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+                style={{ background: "rgba(255,255,255,0.90)", boxShadow: "0 2px 10px rgba(0,0,0,0.08)" }}>
+                <img src="/images/candy-icon.png" alt="🍬" style={{ width: "18px", height: "18px", objectFit: "contain" }} />
+                <span className="font-extrabold" style={{ color: "#333333", fontSize: "14px" }}>{profile.candies}</span>
+              </div>
+              <button className="w-9 h-9 rounded-full flex items-center justify-center font-black text-lg"
+                style={{ background: "#92D050", color: "#FFFFFF", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}>
+                +
+              </button>
             </div>
           </div>
 

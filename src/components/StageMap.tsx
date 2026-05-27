@@ -8,81 +8,87 @@ interface StageMapProps {
   onSelectStage: (stage: Stage) => void;
 }
 
-const bubbleImages = {
-  completed: "/images/stage-select-level-bubble-completed-3-stars.png",
-  current: "/images/stage-select-level-bubble-current-character.png",
-  locked: "/images/stage-select-level-bubble-empty.png",
-};
+const POSITIONS = [0.22, 0.78, 0.22, 0.78, 0.22, 0.78, 0.22, 0.78, 0.22, 0.78];
 
 export default function StageMap({ world, onSelectStage }: StageMapProps) {
   const { profile, checkStageLocked, getProgress } = useGame();
   const { completed, total } = getProgress(world.id);
 
+  const currentStageIdx = world.stages.findIndex((stage, idx) => {
+    const stageProgress = profile.completedStages.find(s => s.stageId === stage.id);
+    const isLocked = checkStageLocked(world.id, idx, world.requiredStars);
+    return !stageProgress?.completed && !isLocked;
+  });
+
   return (
-    <div className="relative w-full px-4 pb-28">
-      {/* Stage nodes — vertical list */}
-      <div className="relative z-10 flex flex-col gap-2 mt-3">
-        {world.stages.map((stage, idx) => {
-          const stageProgress = profile.completedStages.find(s => s.stageId === stage.id);
-          const isCompleted = stageProgress?.completed;
-          const isLocked = checkStageLocked(world.id, idx, world.requiredStars);
-          const isLeft = idx % 2 === 0;
+    <div className="relative w-full pb-28" style={{ minHeight: `${world.stages.length * 110 + 80}px` }}>
 
-          let bubbleSrc = bubbleImages.current;
-          if (isCompleted) bubbleSrc = bubbleImages.completed;
-          else if (isLocked) bubbleSrc = bubbleImages.locked;
-
+      {/* Connecting path — dashed vertical line */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+        {world.stages.map((_, idx) => {
+          if (idx === world.stages.length - 1) return null;
+          const x1 = POSITIONS[idx] * 100;
+          const y1 = 50 + idx * 110 + 44;
+          const x2 = POSITIONS[idx + 1] * 100;
+          const y2 = 50 + (idx + 1) * 110 + 0;
           return (
-            <div
-              key={stage.id}
-              className={`flex items-center gap-3 ${isLeft ? "flex-row" : "flex-row-reverse"}`}
-            >
-              {/* Bubble image */}
-              <button
-                onClick={() => {
-                  if (!isLocked) onSelectStage(stage);
-                }}
-                disabled={isLocked}
-                className="relative shrink-0 transition-all duration-200 active:scale-90 hover:scale-105"
-              >
-                <img
-                  src={bubbleSrc}
-                  alt={isCompleted ? "Complété" : isLocked ? "Verrouillé" : stage.title}
-                  className="w-[60px] h-[60px] object-contain"
-                />
-                {!isCompleted && !isLocked && (
-                  <span className="absolute inset-0 flex items-center justify-center font-extrabold text-[16px]"
-                    style={{ color: "#FFFFFF", textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}>
-                    {stage.number}
-                  </span>
-                )}
-              </button>
-
-              {/* Stage info */}
-              <div className={`flex-1 p-2.5 rounded-2xl ${isLeft ? "text-left" : "text-right"}`}
-                style={{ background: "rgba(255,255,255,0.85)", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
-                <div className="font-bold text-[13px]" style={{ color: "#333333" }}>{stage.title}</div>
-                <div className="text-[11px]" style={{ color: "#999999" }}>{stage.description}</div>
-                {isLocked && (
-                  <div className="text-[10px] font-bold mt-1" style={{ color: "#4A90E2" }}>
-                    Termine le stage précédent !
-                  </div>
-                )}
-              </div>
-            </div>
+            <line key={idx}
+              x1={`${x1}%`} y1={y1} x2={`${x2}%`} y2={y2}
+              stroke="rgba(255,255,255,0.5)" strokeWidth="3" strokeDasharray="8,6" strokeLinecap="round" />
           );
         })}
-      </div>
+      </svg>
 
-      {/* ═══ TREASURE CHEST ═══ */}
-      <div className="flex justify-center mt-4">
+      {/* Stage bubbles */}
+      {world.stages.map((stage, idx) => {
+        const stageProgress = profile.completedStages.find(s => s.stageId === stage.id);
+        const isCompleted = !!stageProgress?.completed;
+        const isLocked = checkStageLocked(world.id, idx, world.requiredStars);
+        const isCurrent = idx === currentStageIdx;
+
+        const xPct = POSITIONS[idx];
+        const top = 50 + idx * 110;
+
+        let bubbleSrc = "/images/stage-select-level-bubble-empty.png";
+        if (isCompleted) bubbleSrc = "/images/stage-select-level-bubble-completed-3-stars.png";
+        else if (isCurrent) bubbleSrc = "/images/stage-select-level-bubble-current-character.png";
+
+        return (
+          <div key={stage.id}
+            className="absolute flex flex-col items-center"
+            style={{ left: `calc(${xPct * 100}% - 44px)`, top, zIndex: 1 }}>
+
+            <button
+              onClick={() => { if (!isLocked) onSelectStage(stage); }}
+              disabled={isLocked}
+              className="relative transition-all duration-200 active:scale-90"
+              style={{ opacity: isLocked ? 0.55 : 1 }}>
+              <img src={bubbleSrc} alt={stage.title}
+                style={{ width: "88px", height: "88px", objectFit: "contain" }} />
+              {!isCompleted && (
+                <span className="absolute inset-0 flex items-center justify-center font-black"
+                  style={{ fontSize: "26px", color: "#FFFFFF", textShadow: "0 2px 6px rgba(0,0,0,0.6)",
+                    paddingBottom: isCurrent ? "22px" : "0" }}>
+                  {stage.number}
+                </span>
+              )}
+            </button>
+
+          </div>
+        );
+      })}
+
+      {/* Treasure chest at bottom */}
+      <div className="absolute flex flex-col items-center"
+        style={{ left: `calc(${POSITIONS[world.stages.length % 2 === 0 ? 0 : 1] * 100}% - 36px)`,
+          top: 50 + world.stages.length * 110, zIndex: 1 }}>
         <img
           src={completed === total
             ? "/images/stage-select-treasure-chest-open.png"
             : "/images/stage-select-treasure-chest-closed.png"}
           alt="Coffre"
-          className={`w-[56px] h-[56px] object-contain ${completed === total ? "animate-bounce" : "opacity-60"}`}
-        />
+          style={{ width: "72px", height: "72px", objectFit: "contain",
+            opacity: completed === total ? 1 : 0.65 }} />
       </div>
     </div>
   );
