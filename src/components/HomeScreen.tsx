@@ -55,7 +55,7 @@ export default function HomeScreen() {
       </div>
 
       {/* Logo Lilo & Noa */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "15%" }}>
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "11%" }}>
         <img
           src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
@@ -75,7 +75,7 @@ export default function HomeScreen() {
         style={{
           zIndex: 5,
           left: "50%",
-          bottom: "8%",
+          bottom: "12%",
           transform: "translateX(-50%)",
           height: "60%",
           width: "auto",
@@ -83,7 +83,7 @@ export default function HomeScreen() {
       />
 
       {/* Bouton Jouer — z:20 cache les pieds */}
-      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "14%", zIndex: 20 }}>
+      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "18%", zIndex: 20 }}>
         <button
           onClick={() => setScreen("worlds")}
           style={{
