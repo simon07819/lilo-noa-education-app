@@ -24,8 +24,8 @@ export default function HomeScreen() {
           src="/images/home-boy-avatar-icon.png"
           alt="Avatar"
           style={{
-            width: "78px",
-            height: "78px",
+            width: "96px",
+            height: "96px",
             borderRadius: "50%",
             objectFit: "cover",
             border: "4px solid #FFD700",
@@ -59,7 +59,7 @@ export default function HomeScreen() {
       {/* Pas de bouton gear en haut à droite — il est déjà en bas */}
 
       {/* Logo Lilo & Noa — descendu, grand */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "16%" }}>
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "8%" }}>
         <img
           src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
@@ -79,7 +79,7 @@ export default function HomeScreen() {
         style={{
           zIndex: 5,
           left: "50%",
-          bottom: "14%",
+          bottom: "20%",
           transform: "translateX(-50%)",
           height: "60%",
           width: "auto",
@@ -87,7 +87,7 @@ export default function HomeScreen() {
       />
 
       {/* Bouton Jouer — z:20 cache les pieds, descendu à 18% */}
-      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "18%", zIndex: 20 }}>
+      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "24%", zIndex: 20 }}>
         <button
           onClick={() => setScreen("worlds")}
           style={{
