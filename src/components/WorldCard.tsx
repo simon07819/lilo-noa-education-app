@@ -24,7 +24,7 @@ export default function WorldCard({ world, onSelect }: WorldCardProps) {
     <button
       onClick={() => onSelect(world)}
       className="relative w-full overflow-hidden transition-all duration-200 active:scale-[0.98]"
-      style={{ height: "118px", borderRadius: "22px", boxShadow: "0 4px 20px rgba(0,0,0,0.22)" }}>
+      style={{ height: "100px", borderRadius: "22px", boxShadow: "0 4px 20px rgba(0,0,0,0.22)" }}>
 
       {/* Thumbnail full background */}
       <img

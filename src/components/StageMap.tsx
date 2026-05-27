@@ -10,8 +10,8 @@ interface StageMapProps {
 
 // Natural winding path positions (x as fraction of screen width)
 const POSITIONS = [0.12, 0.60, 0.18, 0.64, 0.22, 0.60, 0.15, 0.62, 0.20, 0.64];
-const BUBBLE_SIZE = 82;
-const ROW_HEIGHT = 90;
+const BUBBLE_SIZE = 68;
+const ROW_HEIGHT = 74;
 
 export default function StageMap({ world, onSelectStage }: StageMapProps) {
   const { profile, checkStageLocked } = useGame();
