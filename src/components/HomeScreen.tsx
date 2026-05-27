@@ -83,7 +83,7 @@ export default function HomeScreen() {
       />
 
       {/* Bouton Jouer — z:20 cache les pieds */}
-      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "16.5%", zIndex: 20 }}>
+      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "17%", zIndex: 20 }}>
         <button
           onClick={() => setScreen("worlds")}
           style={{
