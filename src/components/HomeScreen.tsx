@@ -19,12 +19,13 @@ export default function HomeScreen() {
 
       {/* Header: avatar top-left, settings top-right */}
       <div className="absolute top-0 left-0 right-0 z-20 flex items-start justify-between px-4 pt-5">
+        {/* Avatar pill */}
         <div className="flex items-center gap-2"
           style={{
             background: "rgba(255,255,255,0.92)",
             borderRadius: "30px",
             padding: "5px 14px 5px 5px",
-            boxShadow: "0 3px 14px rgba(0,0,0,0.1), inset 0 1px 0 white",
+            boxShadow: "0 3px 14px rgba(0,0,0,0.12), inset 0 1px 0 white",
           }}>
           <img
             src="/images/home-boy-avatar-icon.png"
@@ -35,8 +36,8 @@ export default function HomeScreen() {
             <span className="text-[13px] font-semibold" style={{ color: "#333333" }}>
               {profile.name}
             </span>
-            <div className="flex items-center gap-0.5">
-              <img src="/images/home-star-icon.png" alt="" className="w-[14px] h-[14px] object-contain" />
+            <div className="flex items-center gap-1">
+              <span style={{ color: "#FFD700", fontSize: "13px" }}>★</span>
               <span className="text-[12px] font-bold" style={{ color: "#333333" }}>
                 {profile.stars}
               </span>
@@ -44,89 +45,109 @@ export default function HomeScreen() {
           </div>
         </div>
 
+        {/* Settings gear — top right */}
         <button
           onClick={() => setShowSettings(true)}
           className="w-[42px] h-[42px] rounded-full flex items-center justify-center hover:scale-110 transition active:scale-95 shrink-0"
           style={{
             background: "rgba(255,255,255,0.9)",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.12)",
           }}>
-          <img src="/images/home-settings-gear-icon.png" alt="Paramètres" className="w-[22px] h-[22px] object-contain" />
+          <img
+            src="/images/home-settings-gear-icon.png"
+            alt="Paramètres"
+            className="w-[26px] h-[26px] object-contain"
+            style={{ mixBlendMode: "multiply" }}
+          />
         </button>
       </div>
 
-      {/* Logo — upper center, below header */}
-      <div className="absolute top-[8%] left-0 right-0 z-20 flex justify-center">
+      {/* Logo — centered, upper area */}
+      <div className="absolute top-[6%] left-0 right-0 z-20 flex justify-center">
         <img
-          src="/images/app-title-lilo-noa-home-screen.png"
+          src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
-          className="w-[240px] h-auto object-contain"
-          style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.15))" }}
+          className="w-[320px] h-auto object-contain"
+          style={{ mixBlendMode: "multiply" }}
         />
       </div>
 
-      {/* Character — LARGE, dominant, centered */}
+      {/* Character — dominant, centered */}
       <img
         src="/images/character-lilo-home-screen.png"
         alt="Lilo"
         className="absolute z-10 object-contain"
         style={{
           left: "50%",
-          bottom: "25%",
+          bottom: "24%",
           transform: "translateX(-50%)",
-          height: "58%",
+          height: "60%",
           width: "auto",
         }}
       />
 
-      {/* Jouer button — at grass level */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ bottom: "16%" }}>
+      {/* Jouer button */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ bottom: "15%" }}>
         <button
           onClick={() => setScreen("worlds")}
           className="font-extrabold text-white flex items-center justify-center gap-3 transition-all hover:brightness-110 active:scale-[0.97]"
           style={{
-            width: "270px",
-            height: "62px",
-            borderRadius: "31px",
-            fontSize: "22px",
+            width: "310px",
+            height: "64px",
+            borderRadius: "32px",
+            fontSize: "24px",
             background: "linear-gradient(180deg, #92D050 0%, #70AD47 100%)",
             boxShadow: "0 6px 0 #5A9B35, 0 8px 24px rgba(0,0,0,0.22), inset 0 2px 0 rgba(255,255,255,0.5)",
             border: "3px solid rgba(255,255,255,0.5)",
           }}>
-          Jouer <span style={{ fontSize: "18px" }}>▶</span>
+          Jouer <span style={{ fontSize: "20px" }}>▶</span>
         </button>
       </div>
 
-      {/* Profil + Paramètres — circular icon buttons */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center gap-10" style={{ bottom: "4%" }}>
+      {/* Profil + Paramètres — circular avatar/icon buttons */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center gap-12" style={{ bottom: "3%" }}>
+        {/* Profil: avatar photo as button */}
         <div className="flex flex-col items-center gap-1">
           <button
             onClick={() => setScreen("profile")}
-            className="w-[54px] h-[54px] rounded-full flex items-center justify-center hover:scale-110 transition active:scale-90"
+            className="rounded-full overflow-hidden hover:scale-110 transition active:scale-90"
             style={{
-              background: "rgba(255,255,255,0.92)",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 white",
+              width: "62px",
+              height: "62px",
+              border: "3px solid white",
+              boxShadow: "0 4px 14px rgba(0,0,0,0.2)",
             }}>
-            <img src="/images/profile-nav-profile-icon.png" alt="" className="w-[28px] h-[28px] object-contain" />
+            <img
+              src="/images/home-boy-avatar-icon.png"
+              alt="Profil"
+              className="w-full h-full object-cover"
+            />
           </button>
-          <span className="text-[11px] font-bold"
-            style={{ color: "#FFFFFF", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
+          <span className="text-[12px] font-extrabold"
+            style={{ color: "#FFFFFF", textShadow: "0 1px 5px rgba(0,0,0,0.6)" }}>
             Profil
           </span>
         </div>
 
+        {/* Paramètres: gear icon in white circle */}
         <div className="flex flex-col items-center gap-1">
           <button
             onClick={() => setShowSettings(true)}
-            className="w-[54px] h-[54px] rounded-full flex items-center justify-center hover:scale-110 transition active:scale-90"
+            className="w-[62px] h-[62px] rounded-full flex items-center justify-center hover:scale-110 transition active:scale-90"
             style={{
-              background: "rgba(255,255,255,0.92)",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 white",
+              background: "rgba(255,255,255,0.95)",
+              border: "3px solid white",
+              boxShadow: "0 4px 14px rgba(0,0,0,0.2)",
             }}>
-            <img src="/images/profile-settings-gear-icon.png" alt="" className="w-[28px] h-[28px] object-contain" />
+            <img
+              src="/images/home-settings-gear-icon.png"
+              alt="Paramètres"
+              className="w-[36px] h-[36px] object-contain"
+              style={{ mixBlendMode: "multiply" }}
+            />
           </button>
-          <span className="text-[11px] font-bold"
-            style={{ color: "#FFFFFF", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
+          <span className="text-[12px] font-extrabold"
+            style={{ color: "#FFFFFF", textShadow: "0 1px 5px rgba(0,0,0,0.6)" }}>
             Paramètres
           </span>
         </div>
