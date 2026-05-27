@@ -34,9 +34,9 @@ export default function WorldCard({ world, onSelect }: WorldCardProps) {
         style={{ filter: isLocked ? "grayscale(40%) brightness(0.60)" : "none" }}
       />
 
-      {/* Gradient: dark on LEFT for text, transparent on right to show character */}
+      {/* Gradient: lighter so thumbnail stays vibrant */}
       <div className="absolute inset-0"
-        style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.0) 80%)" }} />
+        style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.0) 80%)" }} />
 
       {/* World name — LEFT aligned */}
       <div className="absolute inset-0 flex flex-col justify-center pl-4">

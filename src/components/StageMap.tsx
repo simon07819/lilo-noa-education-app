@@ -8,8 +8,8 @@ interface StageMapProps {
   onSelectStage: (stage: Stage) => void;
 }
 
-// Zigzag positions: 0 = left column, 1 = right column
-const POSITIONS = [0.20, 0.68, 0.20, 0.68, 0.20, 0.68, 0.20, 0.68, 0.20, 0.68];
+// Natural winding path positions (x as fraction of screen width)
+const POSITIONS = [0.12, 0.60, 0.18, 0.64, 0.22, 0.60, 0.15, 0.62, 0.20, 0.64];
 const BUBBLE_SIZE = 82;
 const ROW_HEIGHT = 90;
 
