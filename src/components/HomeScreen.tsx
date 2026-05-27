@@ -18,37 +18,37 @@ export default function HomeScreen() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Header gauche — avatar gold border + nom + étoile, PAS de bulle blanche */}
+      {/* Header gauche — avatar gold + nom + étoile, direct sur le background */}
       <div className="absolute top-0 left-0 z-20 flex items-center gap-2 pt-5 pl-4">
         <img
           src="/images/home-boy-avatar-icon.png"
           alt="Avatar"
           style={{
-            width: "64px",
-            height: "64px",
+            width: "78px",
+            height: "78px",
             borderRadius: "50%",
             objectFit: "cover",
             border: "4px solid #FFD700",
-            boxShadow: "0 0 0 1.5px rgba(0,0,0,0.15)",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
             flexShrink: 0,
           }}
         />
-        <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
+        <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
           <span style={{
             color: "#FFFFFF",
-            fontSize: "14px",
+            fontSize: "16px",
             fontWeight: 800,
-            textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+            textShadow: "0 1px 5px rgba(0,0,0,0.7)",
           }}>
             {profile.name}
           </span>
-          <div style={{ display: "flex", alignItems: "center", gap: "4px", marginTop: "2px" }}>
-            <span style={{ color: "#FFD700", fontSize: "15px", lineHeight: 1, textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}>★</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <span style={{ color: "#FFD700", fontSize: "18px", lineHeight: 1, textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>★</span>
             <span style={{
               color: "#FFFFFF",
-              fontSize: "13px",
+              fontSize: "15px",
               fontWeight: 800,
-              textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+              textShadow: "0 1px 5px rgba(0,0,0,0.7)",
             }}>
               {profile.stars}
             </span>
@@ -56,47 +56,22 @@ export default function HomeScreen() {
         </div>
       </div>
 
-      {/* Header droite — gear grande, juste un contour blanc, pas de fond blanc */}
-      <button
-        onClick={() => setShowSettings(true)}
-        className="absolute z-20 hover:scale-110 transition active:scale-95"
-        style={{
-          top: "16px",
-          right: "16px",
-          width: "60px",
-          height: "60px",
-          borderRadius: "50%",
-          border: "2.5px solid rgba(255,255,255,0.85)",
-          background: "transparent",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 0,
-        }}
-      >
-        <img
-          src="/images/home-settings-gear-icon.png"
-          alt="Paramètres"
-          style={{ width: "46px", height: "46px", objectFit: "contain" }}
-        />
-      </button>
+      {/* Pas de bouton gear en haut à droite — il est déjà en bas */}
 
-      {/* Logo Lilo & Noa — grand, fond transparent, contours blancs préservés */}
-      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "6%" }}>
+      {/* Logo Lilo & Noa — descendu, grand */}
+      <div className="absolute left-0 right-0 z-20 flex justify-center" style={{ top: "16%" }}>
         <img
           src="/images/app-logo-lilo-noa.png"
           alt="Lilo & Noa"
           style={{
-            width: "88%",
-            maxWidth: "400px",
+            width: "92%",
             height: "auto",
             objectFit: "contain",
-            filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.2))",
           }}
         />
       </div>
 
-      {/* Mascotte — z:5, pieds cachés par le bouton Jouer */}
+      {/* Mascotte — z:5, descendu à 14%, pieds derrière le bouton Jouer */}
       <img
         src="/images/character-lilo-home-screen.png"
         alt="Lilo"
@@ -104,15 +79,15 @@ export default function HomeScreen() {
         style={{
           zIndex: 5,
           left: "50%",
-          bottom: "17%",
+          bottom: "14%",
           transform: "translateX(-50%)",
           height: "60%",
           width: "auto",
         }}
       />
 
-      {/* Bouton Jouer — monté à 21% pour cacher les pieds (z:20) */}
-      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "21%", zIndex: 20 }}>
+      {/* Bouton Jouer — z:20 cache les pieds, descendu à 18% */}
+      <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: "18%", zIndex: 20 }}>
         <button
           onClick={() => setScreen("worlds")}
           style={{
@@ -141,7 +116,7 @@ export default function HomeScreen() {
       <div className="absolute left-0 right-0 flex justify-center gap-10"
         style={{ bottom: "4%", zIndex: 20 }}>
 
-        {/* Profil — grande photo avatar, pas de cercle blanc */}
+        {/* Profil */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
           <button
             onClick={() => setScreen("profile")}
@@ -171,7 +146,7 @@ export default function HomeScreen() {
           }}>Profil</span>
         </div>
 
-        {/* Paramètres — gear grande, PAS de cercle blanc rempli */}
+        {/* Paramètres */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
           <button
             onClick={() => setShowSettings(true)}
