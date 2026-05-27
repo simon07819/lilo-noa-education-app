@@ -46,44 +46,47 @@ export default function ProfileScreen() {
 
       <div className="relative z-10 flex flex-col h-full overflow-y-auto" style={{ paddingBottom: "80px" }}>
 
-        {/* Header — avatar large + nom + level + gear */}
+        {/* Header card — BLUE GRADIENT */}
         <div className="px-4 pt-9 pb-4">
           <div className="rounded-3xl p-4 flex items-center gap-4 relative"
-            style={{ background: "rgba(255,255,255,0.90)", boxShadow: "0 4px 16px rgba(0,0,0,0.10)" }}>
+            style={{
+              background: "linear-gradient(135deg, #4E8FD8 0%, #7A68C8 100%)",
+              boxShadow: "0 6px 24px rgba(74,144,226,0.35)"
+            }}>
 
             {/* Settings gear — top right corner */}
             <button
               onClick={() => setShowSettings(true)}
               className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center"
-              style={{ background: "rgba(0,0,0,0.06)" }}>
+              style={{ background: "rgba(255,255,255,0.20)" }}>
               <img src="/images/home-settings-gear-icon.png" alt="Paramètres"
-                style={{ width: "22px", height: "22px", objectFit: "contain" }} />
+                style={{ width: "22px", height: "22px", objectFit: "contain", filter: "brightness(10)" }} />
             </button>
 
             {/* Avatar */}
             <div className="relative flex-shrink-0">
               <img src="/images/profile-boy-avatar.png" alt="Avatar"
                 style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover",
-                  border: "3px solid #FFD700", boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }} />
+                  border: "3px solid rgba(255,255,255,0.9)", boxShadow: "0 4px 16px rgba(0,0,0,0.25)" }} />
               <button className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center"
-                style={{ background: "#4A90E2", boxShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>
-                <img src="/images/profile-edit-pencil-icon.png" alt="✏️" style={{ width: "14px", height: "14px", objectFit: "contain" }} />
+                style={{ background: "rgba(255,255,255,0.25)", boxShadow: "0 2px 6px rgba(0,0,0,0.15)" }}>
+                <img src="/images/profile-edit-pencil-icon.png" alt="✏️" style={{ width: "14px", height: "14px", objectFit: "contain", filter: "brightness(10)" }} />
               </button>
             </div>
 
             {/* Name + Level + XP */}
             <div className="flex-1 pr-8">
-              <h2 style={{ fontSize: "20px", fontWeight: 800, color: "#333333" }}>{profile.name}</h2>
+              <h2 style={{ fontSize: "20px", fontWeight: 800, color: "#FFFFFF" }}>{profile.name}</h2>
               <div className="inline-block rounded-full px-3 py-0.5 mt-0.5"
-                style={{ background: "#D9F0FF", color: "#4A90E2", fontSize: "12px", fontWeight: 700 }}>
+                style={{ background: "rgba(0,0,0,0.20)", color: "#FFFFFF", fontSize: "12px", fontWeight: 700 }}>
                 Niveau {profile.level}
               </div>
               <div className="mt-2">
-                <div className="flex justify-between mb-1" style={{ fontSize: "11px", fontWeight: 600, color: "#999" }}>
+                <div className="flex justify-between mb-1" style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>
                   <span>XP</span><span>{profile.xp}/{profile.xpToNextLevel}</span>
                 </div>
-                <div style={{ height: "6px", background: "#E8E8E8", borderRadius: "3px", overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${xpPct}%`, background: "linear-gradient(90deg, #FFD700 0%, #4A90E2 100%)", borderRadius: "3px" }} />
+                <div style={{ height: "6px", background: "rgba(255,255,255,0.25)", borderRadius: "3px", overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${xpPct}%`, background: "linear-gradient(90deg, #FFD700 0%, #FF9500 100%)", borderRadius: "3px" }} />
                 </div>
               </div>
             </div>
@@ -97,10 +100,10 @@ export default function ProfileScreen() {
             { img: "/images/candy-icon.png", val: profile.candies, label: "Bonbons" },
             { img: "/images/profile-gem-icon.png", val: profile.gems, label: "Gemmes" },
           ].map(({ img, val, label }) => (
-            <div key={label} className="flex flex-col items-center gap-1 flex-1 rounded-2xl py-2"
-              style={{ background: "rgba(255,255,255,0.88)", boxShadow: "0 2px 10px rgba(0,0,0,0.06)" }}>
-              <img src={img} alt={label} style={{ width: "28px", height: "28px", objectFit: "contain" }} />
-              <span style={{ fontSize: "16px", fontWeight: 800, color: "#333333" }}>{val}</span>
+            <div key={label} className="flex flex-col items-center gap-1 flex-1 rounded-2xl py-2.5"
+              style={{ background: "rgba(255,255,255,0.92)", boxShadow: "0 2px 10px rgba(0,0,0,0.07)" }}>
+              <img src={img} alt={label} style={{ width: "30px", height: "30px", objectFit: "contain" }} />
+              <span style={{ fontSize: "18px", fontWeight: 800, color: "#333333" }}>{val}</span>
               <span style={{ fontSize: "10px", fontWeight: 600, color: "#999" }}>{label}</span>
             </div>
           ))}
@@ -108,7 +111,7 @@ export default function ProfileScreen() {
 
         {/* Badges */}
         <div className="px-4 pb-4">
-          <div className="rounded-3xl p-4" style={{ background: "rgba(255,255,255,0.88)", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
+          <div className="rounded-3xl p-4" style={{ background: "rgba(255,255,255,0.92)", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
             <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#333333", marginBottom: "12px" }}>🏅 Mes Badges</h3>
             <div className="flex flex-wrap gap-3">
               {badges.map((badge) => {
@@ -129,7 +132,7 @@ export default function ProfileScreen() {
 
         {/* Accessories */}
         <div className="px-4 pb-4">
-          <div className="rounded-3xl p-4" style={{ background: "rgba(255,255,255,0.88)", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
+          <div className="rounded-3xl p-4" style={{ background: "rgba(255,255,255,0.92)", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
             <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#333333", marginBottom: "12px" }}>🎒 Mes Accessoires</h3>
             <div className="flex flex-wrap gap-3">
               {accessories.map((acc) => {
@@ -160,18 +163,21 @@ export default function ProfileScreen() {
 
         {/* Progress */}
         <div className="px-4 pb-4">
-          <div className="rounded-3xl p-4" style={{ background: "rgba(255,255,255,0.88)", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
+          <div className="rounded-3xl p-4" style={{ background: "rgba(255,255,255,0.92)", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
             <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#333333", marginBottom: "12px" }}>📊 Ma Progression</h3>
             <div className="flex items-center justify-between mb-2">
-              <span style={{ fontSize: "13px", fontWeight: 700, color: "#333333" }}>
-                Stages : {completedStages}/{totalStages}
-              </span>
-              <img src="/images/profile-my-progress-treasure-chest.png" alt="🏆" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
+              <div className="flex items-center gap-2">
+                <img src="/images/profile-star-icon.png" alt="⭐" style={{ width: "20px", height: "20px", objectFit: "contain" }} />
+                <span style={{ fontSize: "14px", fontWeight: 700, color: "#333333" }}>
+                  {completedStages}/{totalStages}
+                </span>
+              </div>
+              <img src="/images/profile-my-progress-treasure-chest.png" alt="🏆" style={{ width: "28px", height: "28px", objectFit: "contain" }} />
             </div>
-            <div style={{ height: "10px", background: "#E8E8E8", borderRadius: "5px", overflow: "hidden" }}>
-              <div style={{ height: "100%", width: `${(completedStages / totalStages) * 100}%`, background: "linear-gradient(90deg, #4A90E2 0%, #8B5CF6 100%)", borderRadius: "5px" }} />
+            <div style={{ height: "12px", background: "#E8E8E8", borderRadius: "6px", overflow: "hidden" }}>
+              <div style={{ height: "100%", width: `${(completedStages / totalStages) * 100}%`, background: "linear-gradient(90deg, #FFD700 0%, #FF9500 100%)", borderRadius: "6px" }} />
             </div>
-            <div className="mt-2" style={{ fontSize: "11px", fontWeight: 700, color: "#999999" }}>
+            <div className="mt-2.5" style={{ fontSize: "12px", fontWeight: 700, color: "#999999" }}>
               🔥 Série de {profile.streak} jour{profile.streak > 1 ? "s" : ""} !
             </div>
           </div>

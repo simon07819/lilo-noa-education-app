@@ -7,18 +7,24 @@ import { Stage } from "@/data/worlds";
 import BottomNav from "./BottomNav";
 
 export default function StagesScreen() {
-  const { selectedWorld, setScreen, setSelectedStage, getProgress } = useGame();
-  const world = getWorldById(selectedWorld);
+  const { selectedWorld, setSelectedWorld, setScreen, setSelectedStage, getProgress } = useGame();
+
+  // Default to forest if no world selected
+  const worldId = selectedWorld || "forest";
+  if (!selectedWorld) setSelectedWorld("forest");
+
+  const world = getWorldById(worldId);
 
   if (!world) {
     return (
-      <div className="flex items-center justify-center min-h-full bg-[#C8E8C8]">
+      <div className="flex items-center justify-center min-h-full" style={{ background: "#C8E8C8" }}>
         <p className="text-xl font-bold" style={{ color: "#333333" }}>Monde non trouvé</p>
       </div>
     );
   }
 
   const { completed, total } = getProgress(world.id);
+  const progressPct = total > 0 ? (completed / total) * 100 : 0;
 
   const handleSelectStage = (stage: Stage) => {
     setSelectedStage(stage.id);
@@ -34,7 +40,7 @@ export default function StagesScreen() {
       {/* Character — bottom right */}
       <img src="/images/character-lilo-home-screen.png" alt="Lilo"
         className="absolute object-contain"
-        style={{ zIndex: 5, right: "-5%", bottom: "10%", height: "35%", width: "auto",
+        style={{ zIndex: 5, right: "-5%", bottom: "12%", height: "32%", width: "auto",
           filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.25))" }} />
 
       <div className="relative z-10 flex flex-col h-full">
@@ -45,8 +51,8 @@ export default function StagesScreen() {
             style={{ background: "rgba(255,255,255,0.90)", color: "#333333", boxShadow: "0 2px 10px rgba(0,0,0,0.08)" }}>
             ←
           </button>
-          <div className="flex items-center gap-2"
-            style={{ background: "rgba(255,255,255,0.90)", borderRadius: "20px", padding: "6px 14px", boxShadow: "0 2px 10px rgba(0,0,0,0.06)" }}>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+            style={{ background: "rgba(255,255,255,0.90)", boxShadow: "0 2px 10px rgba(0,0,0,0.06)" }}>
             <img src="/images/stage-select-star-progress-bar.png" alt="⭐"
               style={{ width: "18px", height: "18px", objectFit: "contain" }} />
             <span className="font-extrabold" style={{ color: "#333333", fontSize: "14px" }}>{completed}/{total}</span>
@@ -61,13 +67,30 @@ export default function StagesScreen() {
         {/* Banner */}
         <div className="flex justify-center px-4 mt-1">
           <img src="/images/stage-select-enchanted-forest-banner.png" alt={world.title}
-            style={{ width: "260px", height: "auto", objectFit: "contain",
+            style={{ width: "240px", height: "auto", objectFit: "contain",
               filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.12))" }} />
         </div>
 
-        {/* Stage Map */}
-        <div className="flex-1 overflow-y-auto">
+        {/* Stage Map — scrollable */}
+        <div className="flex-1 overflow-y-auto" style={{ paddingBottom: "130px" }}>
           <StageMap world={world} onSelectStage={handleSelectStage} />
+        </div>
+
+        {/* Progress bar — fixed above BottomNav */}
+        <div className="absolute left-0 right-0 z-20 px-4" style={{ bottom: "76px" }}>
+          <div className="rounded-2xl px-4 py-2.5 flex items-center gap-3"
+            style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}>
+            <img src="/images/stage-select-star-progress-bar.png" alt="⭐"
+              style={{ width: "20px", height: "20px", objectFit: "contain", flexShrink: 0 }} />
+            <div className="flex-1" style={{ height: "8px", background: "rgba(255,255,255,0.25)", borderRadius: "4px", overflow: "hidden" }}>
+              <div style={{ height: "100%", width: `${progressPct}%`,
+                background: "linear-gradient(90deg, #FFD700 0%, #FF9500 100%)", borderRadius: "4px",
+                transition: "width 0.6s ease" }} />
+            </div>
+            <span style={{ color: "#FFFFFF", fontWeight: 800, fontSize: "14px", flexShrink: 0 }}>
+              {completed}/{total}
+            </span>
+          </div>
         </div>
 
         <BottomNav />

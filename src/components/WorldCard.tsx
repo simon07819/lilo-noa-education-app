@@ -24,42 +24,41 @@ export default function WorldCard({ world, onSelect }: WorldCardProps) {
     <button
       onClick={() => onSelect(world)}
       className="relative w-full overflow-hidden transition-all duration-200 active:scale-[0.98]"
-      style={{ height: "100px", borderRadius: "22px", boxShadow: "0 4px 16px rgba(0,0,0,0.20)" }}>
+      style={{ height: "118px", borderRadius: "22px", boxShadow: "0 4px 20px rgba(0,0,0,0.22)" }}>
 
-      {/* Thumbnail as full background */}
+      {/* Thumbnail full background */}
       <img
         src={worldThumbnails[world.id] || worldThumbnails.forest}
         alt={world.title}
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ filter: isLocked ? "grayscale(50%) brightness(0.65)" : "none" }}
+        style={{ filter: isLocked ? "grayscale(40%) brightness(0.60)" : "none" }}
       />
 
-      {/* Gradient overlay */}
+      {/* Gradient: dark on LEFT for text, transparent on right to show character */}
       <div className="absolute inset-0"
-        style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.35) 100%)" }} />
+        style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.0) 80%)" }} />
 
-      {/* World name — centered */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
+      {/* World name — LEFT aligned */}
+      <div className="absolute inset-0 flex flex-col justify-center pl-4">
         <h3 style={{
-          fontSize: "20px", fontWeight: 900, color: "#FFFFFF",
-          textShadow: "0 2px 8px rgba(0,0,0,0.7)",
+          fontSize: "21px", fontWeight: 900, color: "#FFFFFF",
+          textShadow: "0 2px 8px rgba(0,0,0,0.8)",
+          lineHeight: 1.2, maxWidth: "55%",
         }}>{world.title}</h3>
 
-        {/* Star count pill */}
-        {!isLocked && (
-          <div className="flex items-center gap-1 mt-1.5 px-3 py-0.5 rounded-full"
-            style={{ background: "rgba(0,0,0,0.45)" }}>
-            <span style={{ color: "#FFD700", fontSize: "14px" }}>★</span>
-            <span style={{ color: "#FFFFFF", fontSize: "13px", fontWeight: 700 }}>{completed}/{total}</span>
-          </div>
-        )}
+        {/* Star count pill — left aligned below name */}
+        <div className="flex items-center gap-1 mt-1.5 px-2.5 py-0.5 rounded-full self-start"
+          style={{ background: "rgba(0,0,0,0.50)" }}>
+          <span style={{ color: "#FFD700", fontSize: "13px" }}>★</span>
+          <span style={{ color: "#FFFFFF", fontSize: "12px", fontWeight: 700 }}>{completed}/{total}</span>
+        </div>
       </div>
 
-      {/* Lock icon */}
+      {/* Lock icon — right side */}
       {isLocked && (
-        <div className="absolute right-3 top-1/2 -translate-y-1/2">
+        <div className="absolute right-4 top-1/2 -translate-y-1/2">
           <img src="/images/world-card-lock-icon.png" alt="🔒"
-            style={{ width: "38px", height: "38px", objectFit: "contain" }} />
+            style={{ width: "40px", height: "40px", objectFit: "contain" }} />
         </div>
       )}
     </button>
