@@ -24,11 +24,11 @@ export default function HomeScreen() {
           src="/images/home-boy-avatar-icon.png"
           alt="Avatar"
           style={{
-            width: "54px",
-            height: "54px",
+            width: "64px",
+            height: "64px",
             borderRadius: "50%",
             objectFit: "cover",
-            border: "3px solid #FFD700",
+            border: "4px solid #FFD700",
             boxShadow: "0 0 0 1.5px rgba(0,0,0,0.15)",
             flexShrink: 0,
           }}
@@ -63,8 +63,8 @@ export default function HomeScreen() {
         style={{
           top: "16px",
           right: "16px",
-          width: "52px",
-          height: "52px",
+          width: "60px",
+          height: "60px",
           borderRadius: "50%",
           border: "2.5px solid rgba(255,255,255,0.85)",
           background: "transparent",
@@ -77,7 +77,7 @@ export default function HomeScreen() {
         <img
           src="/images/home-settings-gear-icon.png"
           alt="Paramètres"
-          style={{ width: "36px", height: "36px", objectFit: "contain" }}
+          style={{ width: "46px", height: "46px", objectFit: "contain" }}
         />
       </button>
 
@@ -146,8 +146,8 @@ export default function HomeScreen() {
           <button
             onClick={() => setScreen("profile")}
             style={{
-              width: "72px",
-              height: "72px",
+              width: "80px",
+              height: "80px",
               borderRadius: "50%",
               overflow: "hidden",
               border: "3px solid white",
@@ -176,8 +176,8 @@ export default function HomeScreen() {
           <button
             onClick={() => setShowSettings(true)}
             style={{
-              width: "72px",
-              height: "72px",
+              width: "80px",
+              height: "80px",
               borderRadius: "50%",
               border: "3px solid white",
               background: "transparent",
@@ -192,7 +192,7 @@ export default function HomeScreen() {
             <img
               src="/images/home-settings-gear-icon.png"
               alt="Paramètres"
-              style={{ width: "48px", height: "48px", objectFit: "contain" }}
+              style={{ width: "58px", height: "58px", objectFit: "contain" }}
             />
           </button>
           <span style={{
