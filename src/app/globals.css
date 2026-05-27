@@ -111,13 +111,19 @@
   }
 }
 
-/* Force image sizes — override Tailwind preflight height:auto */
-.force-size {
-  width: var(--fs-w) !important;
-  height: var(--fs-h) !important;
-  min-width: var(--fs-w) !important;
-  min-height: var(--fs-h) !important;
+/* Override Tailwind preflight height:auto on avatar images */
+.home-avatar-header {
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px !important;
+  min-height: 120px !important;
   flex-shrink: 0 !important;
+}
+.home-avatar-bottom {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
 }
 
 /* Scrollbar enfantin */

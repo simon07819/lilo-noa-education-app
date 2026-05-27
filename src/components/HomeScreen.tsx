@@ -23,15 +23,13 @@ export default function HomeScreen() {
         <img
           src="/images/home-boy-avatar-icon.png"
           alt="Avatar"
-          className="force-size"
+          className="home-avatar-header"
           style={{
-            "--fs-w": "120px",
-            "--fs-h": "120px",
             borderRadius: "50%",
             objectFit: "cover",
             border: "4px solid #FFD700",
             boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
-          } as React.CSSProperties}
+          }}
         />
         <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
           <span style={{
@@ -79,7 +77,7 @@ export default function HomeScreen() {
         style={{
           zIndex: 5,
           left: "50%",
-          bottom: "16%",
+          bottom: "13%",
           transform: "translateX(-50%)",
           height: "60%",
           width: "auto",
@@ -135,7 +133,8 @@ export default function HomeScreen() {
             <img
               src="/images/home-boy-avatar-icon.png"
               alt="Profil"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              className="home-avatar-bottom"
+              style={{ objectFit: "cover", display: "block", borderRadius: "50%" }}
             />
           </button>
           <span style={{
