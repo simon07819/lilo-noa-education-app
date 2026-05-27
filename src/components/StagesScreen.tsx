@@ -37,11 +37,11 @@ export default function StagesScreen() {
       <img src="/images/stage-select-background-enchanted-forest.png" alt=""
         className="absolute inset-0 w-full h-full object-cover" />
 
-      {/* Character — bottom right */}
+      {/* Character — bottom right, smaller so it doesn't cover the map */}
       <img src="/images/character-lilo-home-screen.png" alt="Lilo"
         className="absolute object-contain"
-        style={{ zIndex: 5, right: "-5%", bottom: "12%", height: "32%", width: "auto",
-          filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.25))" }} />
+        style={{ zIndex: 5, right: "-3%", bottom: "8%", height: "22%", width: "auto",
+          filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.25))" }} />
 
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}

@@ -5,10 +5,10 @@ import { useGame } from "@/lib/GameContext";
 import SettingsModal from "./SettingsModal";
 
 const navItems = [
-  { img: "/images/profile-nav-profile-icon.png", label: "Profil", screen: "profile" },
-  { img: "/images/profile-nav-worlds-icon.png", label: "Mondes", screen: "worlds" },
-  { img: "/images/profile-nav-rewards-icon.png", label: "Récompenses", screen: "profile" },
-  { img: "/images/profile-nav-settings-icon.png", label: "Paramètres", screen: "settings" },
+  { img: "/images/profile-nav-profile-icon.png", label: "Profil", screen: "profile", activeOn: "profile" },
+  { img: "/images/profile-nav-worlds-icon.png", label: "Mondes", screen: "worlds", activeOn: "worlds" },
+  { img: "/images/profile-nav-rewards-icon.png", label: "Récompenses", screen: "profile", activeOn: "NEVER" },
+  { img: "/images/profile-nav-settings-icon.png", label: "Paramètres", screen: "settings", activeOn: "NEVER" },
 ];
 
 export default function BottomNav() {
@@ -37,7 +37,7 @@ export default function BottomNav() {
         }}>
         <div className="flex justify-around items-center h-[68px] px-2">
           {navItems.map((item) => {
-            const active = screen === item.screen && item.screen !== "settings";
+            const active = screen === item.activeOn;
             return (
               <button
                 key={item.label}

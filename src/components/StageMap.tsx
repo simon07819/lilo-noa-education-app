@@ -10,8 +10,8 @@ interface StageMapProps {
 
 // Zigzag positions: 0 = left column, 1 = right column
 const POSITIONS = [0.20, 0.68, 0.20, 0.68, 0.20, 0.68, 0.20, 0.68, 0.20, 0.68];
-const BUBBLE_SIZE = 96;
-const ROW_HEIGHT = 118;
+const BUBBLE_SIZE = 82;
+const ROW_HEIGHT = 90;
 
 export default function StageMap({ world, onSelectStage }: StageMapProps) {
   const { profile, checkStageLocked } = useGame();
@@ -70,7 +70,7 @@ export default function StageMap({ world, onSelectStage }: StageMapProps) {
         return (
           <div key={stage.id}
             className="absolute flex flex-col items-center"
-            style={{ left: `calc(${xPct * 100}% + ${offset}px)`, top, zIndex: 1 }}>
+            style={{ left: `calc(${xPct * 100}% + ${offset}px)`, top, zIndex: 6 }}>
 
             <button
               onClick={() => { if (!isLocked) onSelectStage(stage); }}
