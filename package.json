@@ -1,7 +1,7 @@
 {
   "name": "education-app",
   "version": "1.0.0",
-  "description": "Lilo & Noa - Application \u00e9ducative pour enfants",
+  "description": "Lilo & Noa - Application éducative pour enfants",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
